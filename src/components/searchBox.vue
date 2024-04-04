@@ -1,14 +1,17 @@
 <script>
+import { state } from '../state.js';
+
 export default {
     name: 'searchBox',
     data(){
         return{
-            searchMovie: ''
+            state,
         }
     },
     methods: {
-        searchMovies(){
-            this.$emit('performSearch', this.searchMovie)
+        search(){
+            const url = `${state.base_url}?api_key=${state.api_key}&query=${state.searchText}`
+            this.state.callApi(url)
         }
     }
 }
@@ -18,8 +21,8 @@ export default {
 <template>
 
 <div class="searchBox">
-    <input type="text" v-model="searchMovie" placeholder="Search a movie">
-    <button @click="searchMovies" >Search</button>
+    <input type="text" v-model="state.searchText" placeholder="Search a movie" @keyup.enter="search">
+    <button @click="search" >Search</button>
 </div>
 
 </template>
