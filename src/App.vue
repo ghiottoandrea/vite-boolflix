@@ -14,6 +14,7 @@ export default {
     data() {
         return {
             state,
+            //traduzione bandiere
             languageFlags: {
                 "en": "us",
                 "zh": "cn",
@@ -36,8 +37,11 @@ export default {
             <ul v-for="movie in state.movies">
                 <li>Titolo: <b> {{ movie.title }}</b></li>
                 <li>Titolo Originale: {{ movie.original_title }}</li>
-                <li>Lingua: <span :class="`fi fi-${languageFlags[movie.original_language] || movie.original_language}`"></span></li>
+                <li>Lingua: 
+                    <span :class="`fi fi-${languageFlags[movie.original_language] || movie.original_language}`"></span>
+                </li>
                 <li>Voto: {{ movie.vote_average }}</li>
+                <li><img :src="`${state.image_url}${movie.poster_path}`" alt="" class="poster_img"></li>
             </ul>
         </div>
 
@@ -46,8 +50,12 @@ export default {
             <ul v-for="tvSerie in state.tvSeries">
                 <li>Titolo: <b> {{ tvSerie.name }}</b></li>
                 <li>Titolo Originale: {{ tvSerie.original_name }}</li>
-                <li>Lingua: <span :class="`fi fi-${languageFlags[tvSerie.original_language] || tvSerie.original_language}`"></span></li>
+                <li>Lingua: 
+                    <span :class="`fi fi-${languageFlags[tvSerie.original_language] || tvSerie.original_language}`"></span>
+                </li>
                 <li>Voto: {{ tvSerie.vote_average }}</li>
+                <li><img :src="`${state.image_url}${tvSerie.poster_path}`" alt=""></li>
+
             </ul>
         </div>
 
@@ -59,8 +67,11 @@ export default {
     display: flex;
 }
 
-.col-6{
+.col-6 {
     width: 50%;
     margin: 0 auto;
+}
+.poster_img{
+
 }
 </style>
