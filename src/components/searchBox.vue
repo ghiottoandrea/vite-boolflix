@@ -10,8 +10,9 @@ export default {
     },
     methods: {
         search(){
-            const url = `${state.base_url}?api_key=${state.api_key}&query=${state.searchText}`
-            this.state.callApi(url)
+            const film_url = `${state.base_url}movie?api_key=${state.api_key}&query=${state.searchText}`
+            const tv_url = `${state.base_url}tv?api_key=${state.api_key}&query=${state.searchText}`
+            this.state.callApi(film_url, tv_url)
         }
     }
 }

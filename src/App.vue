@@ -17,9 +17,9 @@ export default {
             languageFlags: {
                 "en": "us",
                 "zh": "cn",
-                "cn":"cn",
+                "cn": "cn",
                 "ja": "jp",
-                "da":"dk",
+                "da": "dk",
             }
         }
     }
@@ -29,15 +29,38 @@ export default {
 <template>
 
     <searchBox />
+    <div class="d-flex">
 
-    <ul v-for="movie in state.movies">
-        <li>Titolo:<b> {{ movie.title }}</b></li>
-        <li>Titolo Originale: {{ movie.original_title }}</li>
-        <li>Lingua: {{ movie.original_language }}</li>
-        <li>Voto: {{ movie.vote_average }}</li>
-        <li><span :class="`fi fi-${languageFlags[movie.original_language] || movie.original_language}`"></span></li>
-    </ul>
+        <div class="col-6">
+            <h3>Film</h3>
+            <ul v-for="movie in state.movies">
+                <li>Titolo: <b> {{ movie.title }}</b></li>
+                <li>Titolo Originale: {{ movie.original_title }}</li>
+                <li>Lingua: <span :class="`fi fi-${languageFlags[movie.original_language] || movie.original_language}`"></span></li>
+                <li>Voto: {{ movie.vote_average }}</li>
+            </ul>
+        </div>
 
+        <div class="col-6">
+            <h3>Serie TV</h3>
+            <ul v-for="tvSerie in state.tvSeries">
+                <li>Titolo: <b> {{ tvSerie.name }}</b></li>
+                <li>Titolo Originale: {{ tvSerie.original_name }}</li>
+                <li>Lingua: <span :class="`fi fi-${languageFlags[tvSerie.original_language] || tvSerie.original_language}`"></span></li>
+                <li>Voto: {{ tvSerie.vote_average }}</li>
+            </ul>
+        </div>
+
+    </div>
 </template>
 
-<style></style>
+<style>
+.d-flex {
+    display: flex;
+}
+
+.col-6{
+    width: 50%;
+    margin: 0 auto;
+}
+</style>
