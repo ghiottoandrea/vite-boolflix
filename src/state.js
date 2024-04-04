@@ -16,6 +16,7 @@ export const state = reactive({
 
   // Actions that change the state (your methods)
   callApi(url) {
+
     axios.get(url)
       .then(response => {
         console.log('searching...', this.searchText)
