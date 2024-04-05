@@ -3,51 +3,32 @@ import { state } from './state.js';
 import "/node_modules/flag-icons/css/flag-icons.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-import searchBox from './components/searchBox.vue';
+import headerApp from './components/headerApp.vue';
+import mainApp from './components/mainApp.vue';
 //import axios from 'axios';
 
 export default {
     name: `App`,
 
     components: {
-        searchBox
+        headerApp,
+        mainApp
     },
     data() {
         return {
-            state,
-            //traduzione bandiere
-            languageFlags: {
-                "en": "us",
-                "zh": "cn",
-                "cn": "cn",
-                "ja": "jp",
-                "da": "dk",
-            }
-        }
-    },
-    methods: {
-        getValutationStar(vote_average) {
-            let stars = [];
-            let vote = (vote_average / 2).toFixed(0);
-            for (let i = 0; i < 5; i++) {
-                if (i < vote) {
-                    stars.push('fa-solid fa-star star');
-                } else {
-                    stars.push('fa-regular fa-star half_star');
-                }
-            }
-            return stars;
+            state
         }
     }
-
 }
 </script>
 
 <template>
 
-    <searchBox />
+    <headerApp />
 
-    <div class="d-flex">
+    <mainApp />
+
+    <!-- <div class="d-flex">
 
         <div class="col-6">
             <h3>Film</h3>
@@ -85,20 +66,13 @@ export default {
             </ul>
         </div>
 
-    </div>
+    </div> 
+
+-->
 </template>
 
 <style>
-.d-flex {
-    display: flex;
-}
-
-.col-6 {
-    width: 50%;
-    margin: 0 auto;
-}
-
-.star {
-    color: rgb(247, 247, 6);
+#app {
+    background-color: rgb(30, 29, 29);
 }
 </style>
